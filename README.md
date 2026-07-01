@@ -36,7 +36,7 @@ Create `docker-compose.yml`:
 ```yaml
 services:
   kindleboard:
-    image: neil2046/kindleboard:latest
+    image: ghcr.io/neil2046/kindleboard:latest
     container_name: kindleboard
     ports:
       - "10000:10000"
@@ -68,7 +68,7 @@ docker run -d \
   -p 10000:10000 \
   -v ./data:/data \
   --restart unless-stopped \
-  neil2046/kindleboard:latest
+  ghcr.io/neil2046/kindleboard:latest
 ```
 
 ## Build From Source
