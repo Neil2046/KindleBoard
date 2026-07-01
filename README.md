@@ -68,6 +68,17 @@ Mirror image:
 ghcr.io/neil2046/kindleboard:latest
 ```
 
+## Maintainer Publishing
+
+The GitHub Actions workflow always publishes the GHCR image. Docker Hub publishing is optional and runs only when these repository secrets are configured:
+
+```text
+DOCKERHUB_USERNAME
+DOCKERHUB_TOKEN
+```
+
+If either secret is missing, the workflow skips Docker Hub and still publishes to GHCR.
+
 ### Option A: Docker Compose
 
 Create a project folder:
