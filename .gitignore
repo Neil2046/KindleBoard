@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+data/*
+!data/schedule.db
+data_demo_tmp/

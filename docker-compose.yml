@@ -1,0 +1,9 @@
+services:
+  kindleboard:
+    build: .
+    container_name: kindleboard
+    ports:
+      - "10000:10000"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
