@@ -1,13 +1,26 @@
-﻿# KindleBoard
+# KindleBoard - Self-hosted Kindle and E-ink Dashboard
 
 **Version actuelle :** `V1.1`
 
-KindleBoard est un tableau de bord auto-hébergé pour Kindle et écrans e-ink, conçu pour Docker. Il permet de transformer un ancien Kindle Paperwhite en panneau toujours visible pour un planning, une note ou une liste de tâches.
+KindleBoard est un tableau de bord auto-hébergé pour Kindle et écrans e-ink, conçu pour Docker. Il transforme un ancien Kindle Paperwhite en panneau toujours visible pour un planning hebdomadaire, des notes ou une liste de tâches.
 
-![Aperçu anglais de KindleBoard](preview.png)
+Il convient si vous cherchez Kindle Paperwhite dashboard, e-ink dashboard, self-hosted dashboard, Docker Kindle dashboard, Kindle todo list, Kindle memo board ou weekly schedule display pour votre propre serveur.
+
+![Aperçu de KindleBoard comme tableau de bord Kindle et e-ink auto-hébergé avec planning hebdomadaire](preview.png)
 
 KindleBoard est prévu pour un réseau privé de confiance. Si vous l’exposez à internet, utilisez un VPN, une authentification via proxy inverse ou une autre couche de contrôle d’accès.
 
+## Cas d’usage
+
+- Transformer un ancien Kindle Paperwhite en tableau de bord e-ink toujours visible.
+- Afficher un planning hebdomadaire personnel avec total automatique des heures.
+- Afficher une grande note, un message ou un rappel lisible.
+- Utiliser le Kindle comme liste de tâches avec validation au toucher.
+- L’exécuter à la maison, sur un hôte Docker ou dans un homelab.
+
+## Mots-clés de recherche
+
+Kindle dashboard, Kindle Paperwhite dashboard, e-ink dashboard, e-paper dashboard, self-hosted dashboard, Docker Kindle dashboard, Kindle todo list, Kindle memo board, Kindle schedule display, home dashboard, homelab dashboard, SQLite dashboard.
 ## Fonctionnalités
 
 - Planning hebdomadaire personnel avec horaires, jours de repos, notes et total automatique des heures.
@@ -93,6 +106,7 @@ docker compose up -d
 ## Notes Kindle
 
 - Ouvrez `http://SERVER-IP:10000/kindle` dans le navigateur Kindle.
+- Activez le mode toujours allumé, sans veille ou kiosk si votre Kindle ou son firmware le permet.
 - Le Kindle doit pouvoir accéder à l’hôte Docker.
 - La page contient un grand bouton d’actualisation.
 - Les barres du navigateur et l’écran de veille sont contrôlés par Kindle OS.

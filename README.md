@@ -1,12 +1,22 @@
-# KindleBoard
+# KindleBoard - Self-hosted Kindle and E-ink Dashboard
 
 **Current version:** `V1.1`
 
-KindleBoard is a self-hosted Kindle and e-ink dashboard for Docker. It gives an old Kindle Paperwhite a second life as an always-visible personal board for a weekly schedule, memo, or to-do list.
+KindleBoard is a self-hosted Kindle dashboard and e-ink display system for Docker. It turns an old Kindle Paperwhite or other e-ink browser into an always-on information board for weekly schedules, memos, and to-do lists.
 
-![KindleBoard English preview](docs/preview.png)
+Use KindleBoard when you want a lightweight **Kindle Paperwhite dashboard**, **self-hosted e-ink dashboard**, **Docker dashboard for Kindle**, **memo display**, **to-do list display**, or **weekly schedule board** that runs privately on your own server.
+
+![KindleBoard self-hosted Kindle dashboard preview showing a weekly schedule on an e-ink style display](docs/preview.png)
 
 KindleBoard is designed for trusted private-network use. Run it inside a private Docker environment, or protect it with a VPN, reverse proxy, or authentication layer before exposing it to the public internet.
+
+## Common Use Cases
+
+- Turn an old Kindle Paperwhite into an always-on e-ink dashboard.
+- Display a personal weekly work schedule with automatic total hours.
+- Keep a large readable memo or family note on an e-ink screen.
+- Use a Kindle as a simple tap-to-complete to-do list.
+- Run a private dashboard at home, in a homelab, or on any Docker host.
 
 ## Documentation Languages
 
@@ -27,6 +37,7 @@ The application is intentionally local-first. It uses one SQLite database and do
 
 ## Features
 
+- Kindle-optimized dashboard for Kindle Paperwhite and other e-ink browsers.
 - Personal weekly schedule with daily shifts, rest days, notes, and automatic weekly total hours.
 - Overnight shift support, such as `22:00` to `06:00`.
 - Memo mode for large readable notes.
@@ -38,6 +49,10 @@ The application is intentionally local-first. It uses one SQLite database and do
 - Multilingual UI.
 - Docker-ready deployment.
 - Default port: `10000`.
+
+## Search Keywords
+
+Kindle dashboard, Kindle Paperwhite dashboard, e-ink dashboard, e-paper dashboard, self-hosted dashboard, Docker Kindle dashboard, Kindle to-do list, Kindle memo board, Kindle schedule display, home dashboard, homelab dashboard, SQLite dashboard.
 
 ## V1.1 Highlights
 
@@ -210,6 +225,7 @@ docker compose up -d --build
 ## Kindle Usage Notes
 
 - Open `http://SERVER-IP:10000/kindle` on the Kindle browser.
+- Enable always-on, never-sleep, or kiosk display mode on your Kindle if your device or firmware supports it.
 - Keep the Kindle connected to the same reachable network as the Docker host.
 - The page includes a large refresh button so you do not need to use the browser toolbar.
 - Kindle browser toolbars and screen saver behavior are controlled by Kindle OS, not by KindleBoard.

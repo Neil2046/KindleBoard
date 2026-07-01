@@ -1,13 +1,26 @@
-﻿# KindleBoard
+# KindleBoard - Self-hosted Kindle and E-ink Dashboard
 
 **Aktuelle Version:** `V1.1`
 
-KindleBoard ist ein selbst gehostetes Kindle- und E-Ink-Dashboard für Docker. Es macht aus einem alten Kindle Paperwhite ein dauerhaft sichtbares persönliches Board für Wochenplan, Notizen oder Aufgaben.
+KindleBoard ist ein selbst gehostetes Kindle-Dashboard und E-Ink-Display-System für Docker. Es macht aus einem alten Kindle Paperwhite ein dauerhaft sichtbares Board für Wochenpläne, Notizen und Aufgabenlisten.
 
-![KindleBoard English preview](preview.png)
+KindleBoard eignet sich für alle, die ein Kindle Paperwhite dashboard, e-ink dashboard, self-hosted dashboard, Docker Kindle dashboard, Kindle todo list, Kindle memo board oder weekly schedule display auf dem eigenen Server suchen.
+
+![KindleBoard self-hosted Kindle e-ink dashboard preview mit Wochenplan](preview.png)
 
 KindleBoard ist für vertrauenswürdige private Netzwerke gedacht. Wenn du es im Internet bereitstellst, nutze VPN, Reverse-Proxy-Authentifizierung oder eine andere Zugriffskontrolle.
 
+## Typische Anwendungsfälle
+
+- Einen alten Kindle Paperwhite als dauerhaft sichtbares E-Ink-Dashboard nutzen.
+- Persönliche Wochenpläne mit automatischer Gesamtstundenberechnung anzeigen.
+- Große gut lesbare Notizen, Nachrichten oder Erinnerungen anzeigen.
+- Den Kindle als einfache antippbare To-do-Liste verwenden.
+- Privat zu Hause, auf einem Docker-Host oder im Homelab betreiben.
+
+## Suchbegriffe
+
+Kindle dashboard, Kindle Paperwhite dashboard, e-ink dashboard, e-paper dashboard, self-hosted dashboard, Docker Kindle dashboard, Kindle todo list, Kindle memo board, Kindle schedule display, home dashboard, homelab dashboard, SQLite dashboard.
 ## Funktionen
 
 - Persönlicher Wochenplan mit Schichten, freien Tagen, Notizen und automatischer Wochenstundensumme.
@@ -93,6 +106,7 @@ docker compose up -d
 ## Kindle-Hinweise
 
 - Öffne `http://SERVER-IP:10000/kindle` im Kindle-Browser.
+- Aktiviere Always-on, Kein-Ruhezustand oder einen Kiosk-Anzeigemodus, falls dein Kindle oder deine Firmware das unterstützt.
 - Der Kindle muss den Docker-Host erreichen können.
 - Die Seite enthält einen großen Aktualisieren-Button.
 - Browserleiste und Bildschirmschoner werden von Kindle OS gesteuert.

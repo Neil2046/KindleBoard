@@ -1,13 +1,26 @@
-﻿# KindleBoard
+# KindleBoard - 自託管 Kindle 墨水屏看板
 
 **目前版本：** `V1.1`
 
-KindleBoard 是一個運行在 Docker 裡的自託管 Kindle / 墨水屏顯示系統。它可以把舊 Kindle Paperwhite 變成常駐顯示的個人看板，用來顯示每週排班、記事或待辦清單。
+KindleBoard 是一個運行在 Docker 裡的自託管 Kindle 看板與 e-ink 顯示系統。它可以把舊 Kindle Paperwhite 變成常駐顯示的個人資訊看板，用來顯示每週排班、記事或待辦清單。
 
-![KindleBoard 英文預覽](preview.png)
+如果你正在尋找 Kindle Paperwhite dashboard、電子墨水屏看板、自託管家庭看板、Docker Kindle dashboard、Kindle 待辦清單、Kindle 備忘錄顯示或每週排班顯示，KindleBoard 就是為這些場景設計的。
+
+![KindleBoard 自託管 Kindle 墨水屏看板預覽，顯示每週排班表](preview.png)
 
 KindleBoard 建議運行在受信任的私有網路或內網 Docker 環境中。如果要暴露到公網，請先放到 VPN、反向代理認證或其他存取控制之後。
 
+## 常見用途
+
+- 把舊 Kindle Paperwhite 改造成常亮電子墨水屏看板。
+- 顯示個人每週排班，並自動統計總工時。
+- 在墨水屏上顯示大字號記事、留言或家庭提醒。
+- 把 Kindle 當作可以點擊完成的待辦清單。
+- 在家庭伺服器、Docker 主機或 homelab 環境中運行私有看板。
+
+## 搜尋關鍵字
+
+Kindle 看板、Kindle Paperwhite 看板、電子墨水屏看板、e-ink dashboard、自託管 dashboard、Docker Kindle dashboard、Kindle 待辦清單、Kindle 備忘錄、排班表系統、家庭資訊看板、SQLite 看板。
 ## 功能
 
 - 個人每週排班表，支援每日班次、休息日、備註和本週總工時計算。
@@ -95,6 +108,7 @@ docker compose up -d
 ## Kindle 使用說明
 
 - 在 Kindle 瀏覽器打開 `http://SERVER-IP:10000/kindle`。
+- 如果你的 Kindle 或韌體支援常亮模式、不休眠模式或 kiosk 顯示模式，建議開啟，避免頁面進入螢幕保護。
 - Kindle 需要能連到 Docker 主機。
 - 頁面內有大型刷新按鈕。
 - Kindle 工具列、狀態列、螢幕保護由 Kindle 系統控制。

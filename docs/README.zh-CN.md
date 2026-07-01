@@ -1,13 +1,26 @@
-﻿# KindleBoard
+# KindleBoard - 自托管 Kindle 墨水屏看板
 
 **当前版本：** `V1.1`
 
-KindleBoard 是一个运行在 Docker 里的自托管 Kindle / 墨水屏显示系统。它可以把旧 Kindle Paperwhite 变成一个常驻显示的个人看板，用来显示每周排班、备忘录或待办清单。
+KindleBoard 是一个运行在 Docker 里的自托管 Kindle 看板和墨水屏显示系统。它可以把旧 Kindle Paperwhite 变成一个常驻显示的个人信息屏，用来显示每周排班、备忘录或待办清单。
 
-![KindleBoard 英文预览](preview.png)
+如果你正在寻找 Kindle Paperwhite dashboard、电子墨水屏看板、自托管家庭看板、Docker Kindle dashboard、Kindle 待办清单、Kindle 备忘录显示或每周排班显示，KindleBoard 就是为这类场景设计的。
+
+![KindleBoard 自托管 Kindle 墨水屏看板预览，显示每周排班表](preview.png)
 
 KindleBoard 建议运行在受信任的私有网络或内网 Docker 环境中。如果要暴露到公网，请先放到 VPN、反向代理认证或其他访问控制之后。
 
+## 常见用途
+
+- 把旧 Kindle Paperwhite 改造成常亮电子墨水屏看板。
+- 显示个人每周排班，并自动统计总工时。
+- 在墨水屏上显示大字号备忘录、留言或家庭提醒。
+- 把 Kindle 当作可以点击完成的待办清单。
+- 在家庭服务器、Docker 主机或 homelab 环境中运行私有看板。
+
+## 搜索关键词
+
+Kindle 看板、Kindle Paperwhite 看板、电子墨水屏看板、墨水屏 dashboard、自托管 dashboard、Docker Kindle dashboard、Kindle 待办清单、Kindle 备忘录、排班表系统、家庭信息看板、SQLite 看板。
 ## 功能
 
 - 个人每周排班表，支持每天班次、休息日、备注和本周总工时统计。
@@ -124,6 +137,7 @@ docker compose up -d
 ## Kindle 使用说明
 
 - 在 Kindle 浏览器打开 `http://SERVER-IP:10000/kindle`。
+- 如果你的 Kindle 或固件支持常亮模式、不休眠模式或 kiosk 显示模式，建议开启，避免页面进入屏保。
 - Kindle 需要能访问运行 Docker 的机器。
 - 页面内有大刷新按钮。
 - Kindle 浏览器工具栏、系统状态栏、屏保由 Kindle 系统控制，不是网页能完全控制的。

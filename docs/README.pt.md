@@ -1,13 +1,26 @@
-﻿# KindleBoard
+# KindleBoard - Self-hosted Kindle and E-ink Dashboard
 
 **Versão atual:** `V1.1`
 
-KindleBoard é um painel auto-hospedado para Kindle e telas e-ink, feito para Docker. Ele transforma um Kindle Paperwhite antigo em um quadro sempre visível para escala semanal, notas ou lista de tarefas.
+KindleBoard é um painel auto-hospedado para Kindle e telas e-ink, feito para Docker. Ele transforma um Kindle Paperwhite antigo em um quadro sempre visível para escala semanal, notas e lista de tarefas.
 
-![Prévia em inglês do KindleBoard](preview.png)
+Ele é útil para quem procura Kindle Paperwhite dashboard, e-ink dashboard, self-hosted dashboard, Docker Kindle dashboard, Kindle todo list, Kindle memo board ou weekly schedule display no próprio servidor.
+
+![Prévia do KindleBoard como painel auto-hospedado para Kindle e e-ink com escala semanal](preview.png)
 
 KindleBoard foi pensado para redes privadas confiáveis. Se você expuser o serviço à internet, use VPN, autenticação em proxy reverso ou outra camada de controle de acesso.
 
+## Casos de uso
+
+- Transformar um Kindle Paperwhite antigo em um painel e-ink sempre visível.
+- Mostrar uma escala semanal pessoal com total automático de horas.
+- Exibir notas, mensagens ou lembretes grandes e legíveis.
+- Usar o Kindle como lista de tarefas com toque para concluir.
+- Executar em casa, em um host Docker ou em um ambiente homelab.
+
+## Palavras-chave de busca
+
+Kindle dashboard, Kindle Paperwhite dashboard, e-ink dashboard, e-paper dashboard, self-hosted dashboard, Docker Kindle dashboard, Kindle todo list, Kindle memo board, Kindle schedule display, home dashboard, homelab dashboard, SQLite dashboard.
 ## Recursos
 
 - Escala semanal pessoal com turnos, dias de descanso, notas e total automático de horas.
@@ -93,6 +106,7 @@ docker compose up -d
 ## Notas para Kindle
 
 - Abra `http://SERVER-IP:10000/kindle` no navegador do Kindle.
+- Ative o modo sempre ligado, sem suspensão ou kiosk se o seu Kindle ou firmware oferecer suporte.
 - O Kindle precisa acessar o host Docker.
 - A página inclui um botão grande de atualização.
 - Barra do navegador e proteção de tela são controladas pelo Kindle OS.

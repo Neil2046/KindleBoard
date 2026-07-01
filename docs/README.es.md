@@ -1,13 +1,26 @@
-﻿# KindleBoard
+# KindleBoard - Self-hosted Kindle and E-ink Dashboard
 
 **Versión actual:** `V1.1`
 
-KindleBoard es un panel autoalojado para Kindle y pantallas e-ink que se ejecuta con Docker. Permite reutilizar un Kindle Paperwhite como un tablero siempre visible para horarios, notas o tareas.
+KindleBoard es un panel autoalojado para Kindle y pantallas e-ink que se ejecuta con Docker. Convierte un Kindle Paperwhite antiguo en un tablero siempre visible para horarios semanales, notas y listas de tareas.
 
-![Vista previa en inglés de KindleBoard](preview.png)
+Es útil si buscas Kindle Paperwhite dashboard, e-ink dashboard, self-hosted dashboard, Docker Kindle dashboard, Kindle todo list, Kindle memo board o weekly schedule display para usar en tu propio servidor.
+
+![Vista previa de KindleBoard como panel autoalojado para Kindle y e-ink con horario semanal](preview.png)
 
 KindleBoard está pensado para redes privadas de confianza. Si lo expones a internet, usa una VPN, autenticación en un proxy inverso u otra capa de control de acceso.
 
+## Casos de uso
+
+- Convertir un Kindle Paperwhite antiguo en un panel e-ink siempre visible.
+- Mostrar un horario semanal personal con total automático de horas.
+- Mostrar notas, mensajes o recordatorios grandes y legibles.
+- Usar el Kindle como lista de tareas con toque para completar.
+- Ejecutarlo en casa, en un servidor Docker o en un entorno homelab.
+
+## Palabras clave de búsqueda
+
+Kindle dashboard, Kindle Paperwhite dashboard, e-ink dashboard, e-paper dashboard, self-hosted dashboard, Docker Kindle dashboard, Kindle todo list, Kindle memo board, Kindle schedule display, home dashboard, homelab dashboard, SQLite dashboard.
 ## Funciones
 
 - Horario semanal personal con turnos, días de descanso, notas y total automático de horas.
@@ -93,6 +106,7 @@ docker compose up -d
 ## Uso en Kindle
 
 - Abre `http://SERVER-IP:10000/kindle` en el navegador del Kindle.
+- Activa el modo siempre encendido, sin suspensión o kiosk si tu Kindle o firmware lo permite.
 - El Kindle debe poder acceder al host Docker.
 - La página incluye un botón grande de actualización.
 - Las barras del navegador y el protector de pantalla dependen de Kindle OS.
