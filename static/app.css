@@ -350,6 +350,104 @@ tbody th small {
   justify-content: flex-start;
 }
 
+.maintenance-panel {
+  margin-top: 22px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.maintenance-panel h2 {
+  margin: 0 0 14px;
+  font-size: 20px;
+}
+
+.maintenance-actions {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.maintenance-actions > a {
+  min-height: 40px;
+  padding: 10px 14px;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.maintenance-actions form {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.maintenance-actions label {
+  display: grid;
+  gap: 8px;
+  min-width: min(320px, 100%);
+}
+
+.restore-dropzone {
+  padding: 14px;
+  border: 2px dashed var(--line);
+  background: var(--field);
+  cursor: pointer;
+}
+
+.restore-dropzone.dragging {
+  border-color: var(--ink);
+  background: #e7ece3;
+}
+
+.restore-dropzone strong {
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.restore-dropzone input {
+  position: absolute;
+  width: 1px;
+  min-height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.notice {
+  margin: 18px 0 0;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.notice.success {
+  border-color: #527a52;
+  background: #e7ece3;
+}
+
+.notice.error {
+  border-color: #9f5f5f;
+  background: #f3e7e7;
+}
+
+.admin-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.admin-footer a {
+  color: var(--ink);
+}
+
 @media (max-width: 760px) {
   .admin-shell {
     width: min(100% - 24px, 1180px);
@@ -359,7 +457,10 @@ tbody th small {
   .topbar,
   .week-strip,
   .summary-band,
-  .actions {
+  .actions,
+  .admin-footer,
+  .maintenance-actions,
+  .maintenance-actions form {
     align-items: stretch;
     flex-direction: column;
   }

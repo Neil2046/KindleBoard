@@ -2,6 +2,8 @@ import os
 import shutil
 import sqlite3
 from datetime import date, datetime, timedelta
+from email import policy
+from email.parser import BytesParser
 from html import escape
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -19,6 +21,8 @@ DEFAULT_DB_PATHS = [
 ]
 PORT = int(os.environ.get("PORT", "10000"))
 MODES = ("schedule", "notebook", "todo")
+REQUIRED_TABLES = {"weeks", "shifts", "settings", "todos"}
+MAX_RESTORE_BYTES = 50 * 1024 * 1024
 LANGUAGES = [
     ("zh-CN", "中文"),
     ("zh-TW", "繁體中文"),
@@ -178,6 +182,36 @@ TEXT = {
     },
 }
 
+ADMIN_EXTRA_TEXT = {
+    "zh-CN": {
+        "database_tools": "数据库",
+        "download_backup": "下载数据库备份",
+        "restore_database": "恢复数据库",
+        "choose_database": "选择本地数据库文件",
+        "upload_restore": "上传并恢复",
+        "restore_success": "数据库恢复成功。",
+        "restore_error": "数据库恢复失败，请确认上传的是 KindleBoard 数据库备份。",
+    },
+    "zh-TW": {
+        "database_tools": "資料庫",
+        "download_backup": "下載資料庫備份",
+        "restore_database": "恢復資料庫",
+        "choose_database": "選擇本機資料庫檔案",
+        "upload_restore": "上傳並恢復",
+        "restore_success": "資料庫恢復成功。",
+        "restore_error": "資料庫恢復失敗，請確認上傳的是 KindleBoard 資料庫備份。",
+    },
+    "en": {
+        "database_tools": "Database",
+        "download_backup": "Download database backup",
+        "restore_database": "Restore database",
+        "choose_database": "Choose local database file",
+        "upload_restore": "Upload and restore",
+        "restore_success": "Database restored successfully.",
+        "restore_error": "Database restore failed. Please upload a KindleBoard database backup.",
+    },
+}
+
 
 def ensure_db():
     os.makedirs(DATA_DIR, exist_ok=True)
@@ -310,6 +344,13 @@ def text(lang, key):
     return TEXT.get(lang, TEXT["zh-CN"]).get(key, TEXT["zh-CN"].get(key, key))
 
 
+def admin_text(lang, key):
+    lang = valid_lang(lang)
+    return ADMIN_EXTRA_TEXT.get(lang, ADMIN_EXTRA_TEXT["en"]).get(
+        key, ADMIN_EXTRA_TEXT["en"].get(key, key)
+    )
+
+
 def mode_label(mode, lang):
     return text(lang, f"mode_{mode}")
 
@@ -341,6 +382,94 @@ def db_connect():
     conn.execute("PRAGMA journal_mode = WAL")
     conn.execute("PRAGMA synchronous = NORMAL")
     return conn
+
+
+def backup_database_bytes():
+    ensure_db()
+    backup_path = os.path.join(
+        DATA_DIR, f".kindleboard-backup-{datetime.utcnow().strftime('%Y%m%d%H%M%S')}.db"
+    )
+    source = None
+    target = None
+    try:
+        source = sqlite3.connect(DB_PATH)
+        target = sqlite3.connect(backup_path)
+        source.backup(target)
+        target.close()
+        source.close()
+        target = None
+        source = None
+        with open(backup_path, "rb") as file:
+            return file.read()
+    finally:
+        if target is not None:
+            target.close()
+        if source is not None:
+            source.close()
+        if os.path.exists(backup_path):
+            os.remove(backup_path)
+
+
+def validate_database_file(path):
+    conn = None
+    try:
+        conn = sqlite3.connect(path)
+        integrity = conn.execute("PRAGMA integrity_check").fetchone()
+        if not integrity or integrity[0] != "ok":
+            return False
+        rows = conn.execute(
+            "SELECT name FROM sqlite_master WHERE type = 'table'"
+        ).fetchall()
+        table_names = {row[0] for row in rows}
+        return REQUIRED_TABLES.issubset(table_names)
+    except sqlite3.DatabaseError:
+        return False
+    finally:
+        if conn is not None:
+            conn.close()
+
+
+def parse_uploaded_database(content_type, body):
+    if not content_type.startswith("multipart/form-data"):
+        return None
+    header = (
+        f"Content-Type: {content_type}\r\nMIME-Version: 1.0\r\n\r\n".encode("utf-8")
+    )
+    message = BytesParser(policy=policy.default).parsebytes(header + body)
+    if not message.is_multipart():
+        return None
+    for part in message.iter_parts():
+        if part.get_param("name", header="content-disposition") == "database":
+            payload = part.get_payload(decode=True)
+            return payload if payload else None
+    return None
+
+
+def restore_database_from_bytes(raw):
+    if not raw or len(raw) > MAX_RESTORE_BYTES:
+        return False
+    os.makedirs(DATA_DIR, exist_ok=True)
+    restore_path = os.path.join(
+        DATA_DIR, f".kindleboard-restore-{datetime.utcnow().strftime('%Y%m%d%H%M%S')}.db"
+    )
+    try:
+        with open(restore_path, "wb") as file:
+            file.write(raw)
+        if not validate_database_file(restore_path):
+            return False
+        source = sqlite3.connect(restore_path)
+        target = sqlite3.connect(DB_PATH)
+        try:
+            source.backup(target)
+            target.execute("PRAGMA wal_checkpoint(TRUNCATE)")
+        finally:
+            target.close()
+            source.close()
+        ensure_db()
+        return True
+    finally:
+        if os.path.exists(restore_path):
+            os.remove(restore_path)
 
 
 def load_settings(preferred_lang=None):
@@ -599,13 +728,45 @@ def admin_script():
       fontScaleValue.textContent = fontScale.value + '%';
     });
   }
+  var dropZone = document.querySelector('[data-db-dropzone]');
+  var dbInput = document.querySelector('input[name="database"]');
+  var dbFileName = document.querySelector('[data-db-file-name]');
+  if (dropZone && dbInput) {
+    function setFileName() {
+      if (dbFileName) {
+        dbFileName.textContent = dbInput.files && dbInput.files.length
+          ? dbInput.files[0].name
+          : dropZone.getAttribute('data-empty-label');
+      }
+    }
+    dropZone.addEventListener('click', function () {
+      dbInput.click();
+    });
+    dropZone.addEventListener('dragover', function (event) {
+      event.preventDefault();
+      dropZone.classList.add('dragging');
+    });
+    dropZone.addEventListener('dragleave', function () {
+      dropZone.classList.remove('dragging');
+    });
+    dropZone.addEventListener('drop', function (event) {
+      event.preventDefault();
+      dropZone.classList.remove('dragging');
+      if (event.dataTransfer && event.dataTransfer.files.length) {
+        dbInput.files = event.dataTransfer.files;
+        setFileName();
+      }
+    });
+    dbInput.addEventListener('change', setFileName);
+    setFileName();
+  }
   syncPanels();
 })();
 </script>
 """
 
 
-def render_admin(week, settings, todos):
+def render_admin(week, settings, todos, restore_status=""):
     lang = settings["lang"]
     font_scale = clamp_font_scale(settings.get("font_scale", "90"))
     previous_week = (week["week_start"] - timedelta(days=7)).isoformat()
@@ -648,6 +809,11 @@ def render_admin(week, settings, todos):
     schedule_hidden = " hidden" if settings["mode"] != "schedule" else ""
     notebook_hidden = " hidden" if settings["mode"] != "notebook" else ""
     todo_hidden = " hidden" if settings["mode"] != "todo" else ""
+    restore_notice = ""
+    if restore_status == "success":
+        restore_notice = f'<p class="notice success">{escape(admin_text(lang, "restore_success"))}</p>'
+    elif restore_status == "error":
+        restore_notice = f'<p class="notice error">{escape(admin_text(lang, "restore_error"))}</p>'
     body = f"""
 <main class="admin-shell">
   <header class="topbar">
@@ -658,6 +824,7 @@ def render_admin(week, settings, todos):
       <a href="/kindle">{escape(text(lang, "kindle_page"))}</a>
     </nav>
   </header>
+  {restore_notice}
 
   <section class="week-strip">
     <a href="/admin?week_start={previous_week}">{escape(text(lang, "previous_week"))}</a>
@@ -748,7 +915,24 @@ def render_admin(week, settings, todos):
       <a href="/kindle?week_start={week_start}">{escape(text(lang, "view_kindle"))}</a>
     </div>
   </form>
-  <p class="app-version">KindleBoard {APP_VERSION}</p>
+  <section class="maintenance-panel">
+    <h2>{escape(admin_text(lang, "database_tools"))}</h2>
+    <div class="maintenance-actions">
+      <a href="/backup">{escape(admin_text(lang, "download_backup"))}</a>
+      <form method="post" action="/restore" enctype="multipart/form-data">
+        <label class="restore-dropzone" data-db-dropzone data-empty-label="{escape(admin_text(lang, "choose_database"))}">
+          <span>{escape(admin_text(lang, "restore_database"))}</span>
+          <strong data-db-file-name>{escape(admin_text(lang, "choose_database"))}</strong>
+          <input type="file" name="database" accept=".db,.sqlite,.sqlite3,application/octet-stream" required>
+        </label>
+        <button type="submit">{escape(admin_text(lang, "upload_restore"))}</button>
+      </form>
+    </div>
+  </section>
+  <footer class="admin-footer">
+    <span>KindleBoard {APP_VERSION}</span>
+    <span>© 2026 <a href="https://NeilSoftware.Com" target="_blank" rel="noopener noreferrer">NeilSoftware.Com</a> All rights reserved.</span>
+  </footer>
 </main>
 {admin_script()}
 """
@@ -906,7 +1090,17 @@ class AppHandler(BaseHTTPRequestHandler):
             return
         if parsed.path == "/admin":
             week = load_week(monday_for(query.get("week_start", [None])[0]))
-            self.send_html(render_admin(week, load_settings(preferred_lang), load_todos()))
+            self.send_html(
+                render_admin(
+                    week,
+                    load_settings(preferred_lang),
+                    load_todos(),
+                    query.get("restore", [""])[0],
+                )
+            )
+            return
+        if parsed.path == "/backup":
+            self.send_database_backup()
             return
         if parsed.path == "/kindle":
             week = load_week(monday_for(query.get("week_start", [None])[0]))
@@ -931,6 +1125,16 @@ class AppHandler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         parsed = urlparse(self.path)
+        if parsed.path == "/restore":
+            length = int(self.headers.get("Content-Length", "0"))
+            if length <= 0 or length > MAX_RESTORE_BYTES + 1024 * 1024:
+                self.redirect("/admin?restore=error")
+                return
+            body = self.rfile.read(length)
+            raw = parse_uploaded_database(self.headers.get("Content-Type", ""), body)
+            status = "success" if restore_database_from_bytes(raw) else "error"
+            self.redirect(f"/admin?restore={status}")
+            return
         if parsed.path != "/admin":
             self.send_error(HTTPStatus.NOT_FOUND)
             return
@@ -959,6 +1163,17 @@ class AppHandler(BaseHTTPRequestHandler):
             return
         self.send_response(HTTPStatus.OK)
         self.send_header("Content-Type", content_type)
+        self.send_header("Content-Length", str(len(raw)))
+        self.end_headers()
+        self.wfile.write(raw)
+
+    def send_database_backup(self):
+        raw = backup_database_bytes()
+        filename = f"kindleboard-backup-{datetime.utcnow().strftime('%Y%m%d-%H%M%S')}.db"
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", "application/vnd.sqlite3")
+        self.send_header("Content-Disposition", f'attachment; filename="{filename}"')
+        self.send_header("Cache-Control", "no-store")
         self.send_header("Content-Length", str(len(raw)))
         self.end_headers()
         self.wfile.write(raw)

@@ -32,6 +32,7 @@ The application is intentionally local-first. It uses one SQLite database and do
 - Memo mode for large readable notes.
 - To-do list mode with tap-to-complete support directly on Kindle.
 - Admin page for editing content and switching display modes.
+- Database backup download and local database restore upload.
 - Kindle-optimized display page with a large refresh button.
 - One SQLite database for schedule, memo, to-do items, display mode, and language settings.
 - Multilingual UI.
@@ -156,6 +157,8 @@ Schedule, memo, to-do items, display mode, and language settings are all stored 
 The Docker image includes a default English demo database. On first start, if `/data/schedule.db` does not exist, KindleBoard copies the demo database into `/data/schedule.db`. Existing user data is never overwritten.
 
 Do not delete the `data` folder unless you intentionally want to reset the application.
+
+The admin page includes database tools for downloading a SQLite backup and restoring from a local KindleBoard database backup file.
 
 SQLite runtime helper files are ignored by Git:
 
