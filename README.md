@@ -1,10 +1,10 @@
 # KindleBoard
 
-KindleBoard is a self-hosted Kindle display system for a private LAN or NAS. It turns a Kindle Paperwhite into a simple always-visible board for a personal schedule, memo, or to-do list.
+KindleBoard is a self-hosted Kindle display system for Docker. It turns a Kindle Paperwhite into a simple always-visible board for a personal schedule, memo, or to-do list.
 
-KindleBoard is intended for trusted internal network use. It is recommended to run it inside your home LAN, office LAN, or NAS environment. Do not expose it directly to the public internet without a VPN, reverse proxy, or authentication layer.
+KindleBoard is intended for trusted private-network use. Run it in an internal Docker environment, or protect it with a VPN, reverse proxy, or authentication layer before exposing it to the public internet.
 
-The app is designed for Docker deployment. It uses SQLite internally, so no external database is required.
+The app uses SQLite internally, so no external database service is required.
 
 ## Features
 
@@ -13,7 +13,7 @@ The app is designed for Docker deployment. It uses SQLite internally, so no exte
 - To-do list mode with tap-to-complete support on Kindle.
 - Kindle-friendly high-contrast display page.
 - Admin page for editing content and switching modes.
-- Persistent SQLite data.
+- One SQLite database for schedule, memo, to-do items, display mode, and language settings.
 - Multilingual UI.
 - Default port: `10000`.
 
@@ -28,7 +28,7 @@ The default language follows the browser language. After you manually choose and
 Create a folder for KindleBoard:
 
 ```text
-docker/kindleboard
+kindleboard
 ```
 
 Put these files into the folder:
@@ -39,6 +39,7 @@ Dockerfile
 docker-compose.yml
 README.md
 static/
+data/schedule.db
 ```
 
 Start with Docker Compose:
@@ -50,11 +51,11 @@ docker compose up -d
 Open:
 
 ```text
-Admin:  http://NAS-IP:10000/admin
-Kindle: http://NAS-IP:10000/kindle
+Admin:  http://SERVER-IP:10000/admin
+Kindle: http://SERVER-IP:10000/kindle
 ```
 
-Replace `NAS-IP` with your NAS or server LAN IP address.
+Replace `SERVER-IP` with the IP address of the machine running Docker.
 
 ## docker-compose.yml
 
@@ -69,19 +70,6 @@ services:
       - ./data:/data
     restart: unless-stopped
 ```
-
-## NAS Docker UI Installation
-
-1. Open your NAS file manager.
-2. Create a folder, for example `docker/kindleboard`.
-3. Upload `app.py`, `Dockerfile`, `docker-compose.yml`, `README.md`, and `static/`.
-4. Open the NAS Docker app.
-5. Go to `Compose`.
-6. Create a new project named `kindleboard`.
-7. Set the project path to `docker/kindleboard`.
-8. Use the included `docker-compose.yml`.
-9. Start the project.
-10. Open `http://NAS-IP:10000/admin`.
 
 ## Data Persistence
 
@@ -99,7 +87,7 @@ The Compose file maps it into the container:
 ./data:/data
 ```
 
-Do not delete the `data` folder. It contains your schedule, memo, to-do list, display mode, and language setting.
+Do not delete the `data` folder. It contains all user data.
 
 The repository includes a default English demo database at `data/schedule.db`. A fresh Docker installation starts with this demo content.
 
@@ -132,15 +120,15 @@ docker compose up -d --build
 
 KindleBoard is intended for the Kindle browser:
 
-- Use `http://NAS-IP:10000/kindle` on the Kindle.
-- Keep the device on the same LAN as the NAS.
+- Use `http://SERVER-IP:10000/kindle` on the Kindle.
+- Keep the Kindle connected to the same reachable network as the Docker host.
 - The page includes a large refresh button.
 - The Kindle browser toolbar and screen saver are controlled by Kindle OS, not by the web page.
 - Keeping Wi-Fi and front light on will use more battery.
 
 ## 中文
 
-KindleBoard 是一个适合部署在 NAS 内网里的 Kindle 显示系统，只需要 Docker，不需要额外数据库。
+KindleBoard 是一个可运行在 Docker 里的 Kindle 显示系统，不需要额外数据库。建议部署在受信任的私有网络或内网环境中，不建议直接暴露到公网。
 
 Docker 安装：
 
@@ -151,15 +139,15 @@ docker compose up -d
 访问：
 
 ```text
-管理端: http://NAS-IP:10000/admin
-Kindle: http://NAS-IP:10000/kindle
+管理端: http://SERVER-IP:10000/admin
+Kindle: http://SERVER-IP:10000/kindle
 ```
 
-数据保存在 `./data/schedule.db`。升级时不要删除 `data` 目录。
+三个功能都在同一个数据库 `./data/schedule.db` 内：排班表、记事本、待办清单。升级时不要删除 `data` 目录。
 
 ## 繁體中文
 
-KindleBoard 是一個適合部署在 NAS 內網中的 Kindle 顯示系統，只需要 Docker，不需要額外資料庫。
+KindleBoard 是一個可運行在 Docker 裡的 Kindle 顯示系統，不需要額外資料庫。建議部署在受信任的私有網路或內網環境中，不建議直接暴露到公網。
 
 Docker 安裝：
 
@@ -170,15 +158,15 @@ docker compose up -d
 訪問：
 
 ```text
-管理端: http://NAS-IP:10000/admin
-Kindle: http://NAS-IP:10000/kindle
+管理端: http://SERVER-IP:10000/admin
+Kindle: http://SERVER-IP:10000/kindle
 ```
 
-資料保存在 `./data/schedule.db`。升級時請保留 `data` 目錄。
+三個功能都在同一個資料庫 `./data/schedule.db` 內：排班表、記事本、待辦清單。升級時請保留 `data` 目錄。
 
 ## 日本語
 
-KindleBoard は NAS のローカルネットワークで使う Kindle 表示システムです。Docker だけで動作し、外部データベースは不要です。
+KindleBoard は Docker で動作する Kindle 表示システムです。外部データベースは不要です。信頼できるプライベートネットワークでの利用を推奨します。
 
 Docker インストール：
 
@@ -189,15 +177,15 @@ docker compose up -d
 アクセス：
 
 ```text
-Admin:  http://NAS-IP:10000/admin
-Kindle: http://NAS-IP:10000/kindle
+Admin:  http://SERVER-IP:10000/admin
+Kindle: http://SERVER-IP:10000/kindle
 ```
 
-データは `./data/schedule.db` に保存されます。アップグレード時は `data` フォルダーを削除しないでください。
+勤務表、メモ、やることリストはすべて `./data/schedule.db` に保存されます。アップグレード時は `data` フォルダーを削除しないでください。
 
 ## 한국어
 
-KindleBoard는 NAS 로컬 네트워크에서 사용하는 Kindle 표시 시스템입니다. Docker만 필요하며 외부 데이터베이스는 필요하지 않습니다.
+KindleBoard는 Docker에서 실행되는 Kindle 표시 시스템입니다. 외부 데이터베이스는 필요하지 않습니다. 신뢰할 수 있는 사설 네트워크에서 사용하는 것을 권장합니다.
 
 Docker 설치:
 
@@ -208,15 +196,15 @@ docker compose up -d
 접속:
 
 ```text
-Admin:  http://NAS-IP:10000/admin
-Kindle: http://NAS-IP:10000/kindle
+Admin:  http://SERVER-IP:10000/admin
+Kindle: http://SERVER-IP:10000/kindle
 ```
 
-데이터는 `./data/schedule.db`에 저장됩니다. 업그레이드할 때 `data` 폴더를 삭제하지 마세요.
+근무표, 메모, 할 일 목록은 모두 `./data/schedule.db` 하나에 저장됩니다. 업그레이드할 때 `data` 폴더를 삭제하지 마세요.
 
 ## Español
 
-KindleBoard es un sistema de pantalla para Kindle pensado para una red local o NAS. Solo necesita Docker y no requiere una base de datos externa.
+KindleBoard es un sistema de pantalla para Kindle que se ejecuta en Docker. No requiere una base de datos externa. Se recomienda usarlo en una red privada de confianza.
 
 Instalación con Docker:
 
@@ -227,15 +215,15 @@ docker compose up -d
 Acceso:
 
 ```text
-Admin:  http://NAS-IP:10000/admin
-Kindle: http://NAS-IP:10000/kindle
+Admin:  http://SERVER-IP:10000/admin
+Kindle: http://SERVER-IP:10000/kindle
 ```
 
-Los datos se guardan en `./data/schedule.db`. No borres la carpeta `data` al actualizar.
+El horario, las notas y las tareas se guardan en una sola base de datos: `./data/schedule.db`. No borres la carpeta `data` al actualizar.
 
 ## Deutsch
 
-KindleBoard ist ein Kindle-Anzeigesystem für ein lokales Netzwerk oder NAS. Es benötigt nur Docker und keine externe Datenbank.
+KindleBoard ist ein Kindle-Anzeigesystem für Docker. Es benötigt keine externe Datenbank. Der Betrieb in einem vertrauenswürdigen privaten Netzwerk wird empfohlen.
 
 Docker-Installation:
 
@@ -246,15 +234,15 @@ docker compose up -d
 Aufrufen:
 
 ```text
-Admin:  http://NAS-IP:10000/admin
-Kindle: http://NAS-IP:10000/kindle
+Admin:  http://SERVER-IP:10000/admin
+Kindle: http://SERVER-IP:10000/kindle
 ```
 
-Die Daten liegen in `./data/schedule.db`. Beim Upgrade den Ordner `data` nicht löschen.
+Dienstplan, Notizen und Aufgaben werden in einer einzigen Datenbank gespeichert: `./data/schedule.db`. Beim Upgrade den Ordner `data` nicht löschen.
 
 ## Français
 
-KindleBoard est un système d’affichage Kindle pour un réseau local ou un NAS. Il nécessite seulement Docker et aucune base de données externe.
+KindleBoard est un système d’affichage Kindle qui fonctionne avec Docker. Il ne nécessite aucune base de données externe. Il est recommandé de l’utiliser dans un réseau privé de confiance.
 
 Installation Docker :
 
@@ -265,15 +253,15 @@ docker compose up -d
 Accès :
 
 ```text
-Admin:  http://NAS-IP:10000/admin
-Kindle: http://NAS-IP:10000/kindle
+Admin:  http://SERVER-IP:10000/admin
+Kindle: http://SERVER-IP:10000/kindle
 ```
 
-Les données sont stockées dans `./data/schedule.db`. Ne supprimez pas le dossier `data` lors d’une mise à jour.
+Le planning, les notes et les tâches sont stockés dans une seule base de données : `./data/schedule.db`. Ne supprimez pas le dossier `data` lors d’une mise à jour.
 
 ## Português
 
-KindleBoard é um sistema de exibição para Kindle em uma rede local ou NAS. Ele precisa apenas de Docker e não requer banco de dados externo.
+KindleBoard é um sistema de exibição para Kindle que roda em Docker. Ele não requer banco de dados externo. Recomenda-se usá-lo em uma rede privada confiável.
 
 Instalação com Docker:
 
@@ -284,8 +272,8 @@ docker compose up -d
 Acesso:
 
 ```text
-Admin:  http://NAS-IP:10000/admin
-Kindle: http://NAS-IP:10000/kindle
+Admin:  http://SERVER-IP:10000/admin
+Kindle: http://SERVER-IP:10000/kindle
 ```
 
-Os dados ficam em `./data/schedule.db`. Não apague a pasta `data` ao atualizar.
+Escala, notas e tarefas ficam em um único banco de dados: `./data/schedule.db`. Não apague a pasta `data` ao atualizar.
