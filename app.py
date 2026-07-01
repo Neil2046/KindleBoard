@@ -634,8 +634,7 @@ def render_admin(week, settings, todos):
 <main class="admin-shell">
   <header class="topbar">
     <div>
-      <h1>KindleBoard</h1>
-      <p class="version-line">{APP_VERSION}</p>
+      <h1 class="brand-title">KindleBoard <span>{APP_VERSION}</span></h1>
     </div>
     <nav>
       <a href="/kindle">{escape(text(lang, "kindle_page"))}</a>

@@ -66,7 +66,6 @@ a:hover {
   font-size: 13px;
 }
 
-.version-line,
 .app-version {
   margin: 8px 0 0;
   color: var(--muted);
@@ -77,6 +76,18 @@ h1 {
   margin: 0;
   font-size: clamp(28px, 4vw, 48px);
   font-weight: 700;
+}
+
+.brand-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.brand-title span {
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .topbar nav a,
