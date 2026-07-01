@@ -68,7 +68,7 @@ jobs:
         uses: docker/metadata-action@v6
         with:
           images: |
-            neil2046/kindleboard
+            ${{ env.DOCKERHUB_USERNAME }}/kindleboard
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
             type=ref,event=tag

@@ -79,6 +79,8 @@ DOCKERHUB_TOKEN
 
 If either secret is missing, the workflow skips Docker Hub and still publishes to GHCR.
 
+Before enabling Docker Hub publishing, create a Docker Hub repository named `kindleboard` under the same account used in `DOCKERHUB_USERNAME`, and make sure the access token has read/write permission for that repository.
+
 ### Option A: Docker Compose
 
 Create a project folder:
