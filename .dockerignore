@@ -1,0 +1,10 @@
+.git
+.github
+.agents
+__pycache__
+*.pyc
+data/schedule.db-shm
+data/schedule.db-wal
+tmp_first_run_check*
+README.md
+docs

@@ -32,6 +32,12 @@ The default language follows the browser language. After you manually choose and
 The published image is:
 
 ```text
+neil2046/kindleboard:latest
+```
+
+Mirror image:
+
+```text
 ghcr.io/neil2046/kindleboard:latest
 ```
 
@@ -49,7 +55,7 @@ Create `docker-compose.yml` in that folder:
 ```yaml
 services:
   kindleboard:
-    image: ghcr.io/neil2046/kindleboard:latest
+    image: neil2046/kindleboard:latest
     container_name: kindleboard
     ports:
       - "10000:10000"
@@ -81,7 +87,13 @@ docker run -d \
   -p 10000:10000 \
   -v ./data:/data \
   --restart unless-stopped \
-  ghcr.io/neil2046/kindleboard:latest
+  neil2046/kindleboard:latest
+```
+
+GHCR mirror:
+
+```bash
+docker pull ghcr.io/neil2046/kindleboard:latest
 ```
 
 If you use `docker run`, run the command from the folder where you want KindleBoard to store its `data` directory.

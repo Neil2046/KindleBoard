@@ -1,6 +1,6 @@
 services:
   kindleboard:
-    image: ghcr.io/neil2046/kindleboard:latest
+    image: neil2046/kindleboard:latest
     container_name: kindleboard
     ports:
       - "10000:10000"
