@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">KindleBoard English preview</title>
+  <desc id="desc">A preview of KindleBoard showing an English weekly schedule optimized for Kindle and e-ink displays.</desc>
+  <rect width="1280" height="720" fill="#f6f7f3"/>
+  <rect x="88" y="48" width="1104" height="624" rx="8" fill="#ffffff" stroke="#191a17" stroke-width="3"/>
+  <rect x="112" y="72" width="1056" height="88" fill="#ffffff"/>
+  <text x="112" y="110" font-family="Georgia, 'Times New Roman', serif" font-size="30" fill="#191a17">07/06 - 07/12</text>
+  <text x="112" y="150" font-family="Georgia, 'Times New Roman', serif" font-size="54" font-weight="700" fill="#191a17">Schedule</text>
+  <rect x="1010" y="83" width="130" height="58" fill="#ffffff" stroke="#191a17" stroke-width="5"/>
+  <text x="1034" y="123" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-weight="700" fill="#191a17">Refresh</text>
+  <line x1="112" y1="170" x2="1168" y2="170" stroke="#191a17" stroke-width="6"/>
+
+  <rect x="112" y="190" width="1056" height="82" fill="#ffffff" stroke="#191a17" stroke-width="3"/>
+  <text x="132" y="238" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="700" fill="#191a17">Mon</text>
+  <text x="132" y="264" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#191a17">07-06</text>
+  <text x="330" y="247" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="700" fill="#191a17">09:00 - 17:00</text>
+  <text x="1000" y="247" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700" text-anchor="end" fill="#191a17">7 h</text>
+
+  <rect x="112" y="272" width="1056" height="82" fill="#ffffff" stroke="#191a17" stroke-width="3"/>
+  <text x="132" y="320" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="700" fill="#191a17">Tue</text>
+  <text x="132" y="346" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#191a17">07-07</text>
+  <text x="330" y="329" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="700" fill="#191a17">10:00 - 18:00</text>
+  <text x="1000" y="329" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700" text-anchor="end" fill="#191a17">7 h 30 min</text>
+
+  <rect x="112" y="354" width="1056" height="82" fill="#ffffff" stroke="#191a17" stroke-width="3"/>
+  <text x="132" y="402" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="700" fill="#191a17">Wed</text>
+  <text x="132" y="428" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#191a17">07-08</text>
+  <text x="330" y="411" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="700" fill="#191a17">Rest</text>
+
+  <rect x="112" y="436" width="1056" height="82" fill="#ffffff" stroke="#191a17" stroke-width="3"/>
+  <text x="132" y="484" font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="700" fill="#191a17">Thu</text>
+  <text x="132" y="510" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#191a17">07-09</text>
+  <text x="330" y="493" font-family="Georgia, 'Times New Roman', serif" font-size="38" font-weight="700" fill="#191a17">14:00 - 22:00</text>
+  <text x="1000" y="493" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700" text-anchor="end" fill="#191a17">7 h 15 min</text>
+
+  <rect x="112" y="538" width="1056" height="82" fill="#191a17"/>
+  <text x="132" y="574" font-family="Georgia, 'Times New Roman', serif" font-size="24" font-weight="700" fill="#ffffff">Message</text>
+  <text x="132" y="608" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700" fill="#ffffff">Demo weekly note: remember to check the Kindle page.</text>
+
+  <text x="930" y="650" font-family="Georgia, 'Times New Roman', serif" font-size="26" fill="#191a17">Weekly total</text>
+  <text x="1168" y="650" font-family="Georgia, 'Times New Roman', serif" font-size="58" font-weight="700" text-anchor="end" fill="#191a17">36 h</text>
+  <text x="112" y="650" font-family="Segoe UI, Arial, sans-serif" font-size="18" fill="#6d7068">KindleBoard V1.0</text>
+</svg>

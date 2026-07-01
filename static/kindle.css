@@ -233,6 +233,14 @@ footer strong {
   line-height: 1;
 }
 
+footer small,
+.simple-footer small {
+  display: block;
+  margin-top: 8px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
 @media (max-width: 700px) {
   .kindle-page {
     margin: 14px 96px 16px 56px;

@@ -1,6 +1,10 @@
 # KindleBoard
 
+**Current version:** `V1.0`
+
 KindleBoard is a self-hosted Kindle display system for Docker. It turns a Kindle Paperwhite into a simple always-visible board for a personal schedule, memo, or to-do list.
+
+![KindleBoard English preview](docs/preview.svg)
 
 KindleBoard is intended for trusted private-network use. Run it in an internal Docker environment, or protect it with a VPN, reverse proxy, or authentication layer before exposing it to the public internet.
 
@@ -25,13 +29,22 @@ The default language follows the browser language. After you manually choose and
 
 ## Docker Installation
 
-Create a folder for KindleBoard:
+The published image is:
 
 ```text
-kindleboard
+ghcr.io/neil2046/kindleboard:latest
 ```
 
-Create `docker-compose.yml`:
+### Option A: Docker Compose
+
+Create a project folder:
+
+```bash
+mkdir kindleboard
+cd kindleboard
+```
+
+Create `docker-compose.yml` in that folder:
 
 ```yaml
 services:
@@ -45,7 +58,7 @@ services:
     restart: unless-stopped
 ```
 
-Start with Docker Compose:
+Start the container:
 
 ```bash
 docker compose up -d
@@ -60,7 +73,7 @@ Kindle: http://SERVER-IP:10000/kindle
 
 Replace `SERVER-IP` with the IP address of the machine running Docker.
 
-You can also run it directly:
+### Option B: docker run
 
 ```bash
 docker run -d \
@@ -71,9 +84,11 @@ docker run -d \
   ghcr.io/neil2046/kindleboard:latest
 ```
 
+If you use `docker run`, run the command from the folder where you want KindleBoard to store its `data` directory.
+
 ## Build From Source
 
-If you want to build the image yourself, clone the repository and use:
+You usually do not need this. Use it only if you want to build the image yourself from the repository source:
 
 ```yaml
 services:

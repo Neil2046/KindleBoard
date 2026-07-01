@@ -9,6 +9,7 @@ from urllib.parse import parse_qs, urlparse
 
 
 APP_TITLE = "KindleBoard"
+APP_VERSION = "V1.0"
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.abspath(os.environ.get("DATA_DIR", os.path.join(BASE_DIR, "data")))
 DB_PATH = os.path.join(DATA_DIR, "schedule.db")
@@ -634,6 +635,7 @@ def render_admin(week, settings, todos):
   <header class="topbar">
     <div>
       <h1>KindleBoard</h1>
+      <p class="version-line">{APP_VERSION}</p>
     </div>
     <nav>
       <a href="/kindle">{escape(text(lang, "kindle_page"))}</a>
@@ -724,6 +726,7 @@ def render_admin(week, settings, todos):
       <a href="/kindle?week_start={week_start}">{escape(text(lang, "view_kindle"))}</a>
     </div>
   </form>
+  <p class="app-version">KindleBoard {APP_VERSION}</p>
 </main>
 {admin_script()}
 """
@@ -779,6 +782,7 @@ def render_kindle_schedule(week, lang):
   <footer>
     <span>{escape(text(lang, "weekly_total"))}</span>
     <strong>{format_hours(week["total_minutes"], lang)}</strong>
+    <small>KindleBoard {APP_VERSION}</small>
   </footer>
 """
 
@@ -793,6 +797,7 @@ def render_kindle_notebook(settings):
     <h1>{escape(mode_label("notebook", lang))}</h1>
   </header>
   <section class="kindle-note-page">{escape(note_text)}</section>
+  <footer class="simple-footer"><small>KindleBoard {APP_VERSION}</small></footer>
 """
 
 
@@ -824,6 +829,7 @@ def render_kindle_todo(todos, lang):
   <ol class="kindle-todo-list">
     {items}
   </ol>
+  <footer class="simple-footer"><small>KindleBoard {APP_VERSION}</small></footer>
 """
 
 
