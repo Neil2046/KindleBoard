@@ -4,7 +4,7 @@
 
 KindleBoard is a self-hosted Kindle display system for Docker. It turns a Kindle Paperwhite into a simple always-visible board for a personal schedule, memo, or to-do list.
 
-![KindleBoard English preview](docs/preview.svg)
+![KindleBoard English preview](docs/preview.png)
 
 KindleBoard is intended for trusted private-network use. Run it in an internal Docker environment, or protect it with a VPN, reverse proxy, or authentication layer before exposing it to the public internet.
 
