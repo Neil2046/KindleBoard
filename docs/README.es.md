@@ -1,6 +1,6 @@
-# KindleBoard
+﻿# KindleBoard
 
-**Versión actual:** `V1.0`
+**Versión actual:** `V1.1`
 
 KindleBoard es un panel autoalojado para Kindle y pantallas e-ink que se ejecuta con Docker. Permite reutilizar un Kindle Paperwhite como un tablero siempre visible para horarios, notas o tareas.
 
@@ -15,6 +15,7 @@ KindleBoard está pensado para redes privadas de confianza. Si lo expones a inte
 - Modo de notas con texto grande.
 - Lista de tareas con marcado de completado directamente desde Kindle.
 - Panel de administración para editar contenido, cambiar modo y cambiar idioma.
+- Descarga de copia de seguridad de la base de datos y restauración desde un archivo local.
 - Página optimizada para Kindle con alto contraste y botón grande de actualización.
 - Una sola base de datos SQLite para horario, notas, tareas, modo de pantalla e idioma.
 - Interfaz multilingüe.
@@ -78,6 +79,8 @@ Kindle: http://SERVER-IP:10000/kindle
 
 Los datos se guardan en `./data/schedule.db`. Horario, notas, tareas, modo de pantalla e idioma se almacenan en esta única base de datos SQLite.
 
+El panel de administración incluye herramientas para descargar una copia de seguridad SQLite y restaurar datos desde un archivo local de copia de seguridad de KindleBoard.
+
 En el primer arranque, si `/data/schedule.db` no existe, KindleBoard copia una base de datos demo en inglés. Los datos existentes nunca se sobrescriben.
 
 ## Actualización
@@ -97,3 +100,4 @@ docker compose up -d
 ## Seguridad
 
 KindleBoard no incluye cuentas ni inicio de sesión. Úsalo en entornos de confianza. Para acceso externo, usa VPN o autenticación mediante proxy inverso.
+

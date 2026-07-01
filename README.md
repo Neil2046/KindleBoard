@@ -1,6 +1,6 @@
 # KindleBoard
 
-**Current version:** `V1.0`
+**Current version:** `V1.1`
 
 KindleBoard is a self-hosted Kindle and e-ink dashboard for Docker. It gives an old Kindle Paperwhite a second life as an always-visible personal board for a weekly schedule, memo, or to-do list.
 
@@ -38,6 +38,13 @@ The application is intentionally local-first. It uses one SQLite database and do
 - Multilingual UI.
 - Docker-ready deployment.
 - Default port: `10000`.
+
+## V1.1 Highlights
+
+- Added database backup download from the admin page.
+- Added local SQLite database restore upload with validation.
+- Added drag-and-drop support for restore files.
+- The admin page opens the Kindle display page in a new browser tab.
 
 ## Display Modes
 

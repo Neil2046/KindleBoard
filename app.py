@@ -11,7 +11,7 @@ from urllib.parse import parse_qs, urlparse
 
 
 APP_TITLE = "KindleBoard"
-APP_VERSION = "V1.0"
+APP_VERSION = "V1.1"
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.abspath(os.environ.get("DATA_DIR", os.path.join(BASE_DIR, "data")))
 DB_PATH = os.path.join(DATA_DIR, "schedule.db")
@@ -912,7 +912,7 @@ def render_admin(week, settings, todos, restore_status=""):
 
     <div class="actions">
       <button type="submit">{escape(text(lang, "save"))}</button>
-      <a href="/kindle?week_start={week_start}">{escape(text(lang, "view_kindle"))}</a>
+      <a href="/kindle?week_start={week_start}" target="_blank" rel="noopener noreferrer">{escape(text(lang, "view_kindle"))}</a>
     </div>
   </form>
   <section class="maintenance-panel">
