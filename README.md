@@ -31,15 +31,18 @@ Create a folder for KindleBoard:
 kindleboard
 ```
 
-Put these files into the folder:
+Create `docker-compose.yml`:
 
-```text
-app.py
-Dockerfile
-docker-compose.yml
-README.md
-static/
-data/schedule.db
+```yaml
+services:
+  kindleboard:
+    image: neil2046/kindleboard:latest
+    container_name: kindleboard
+    ports:
+      - "10000:10000"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
 ```
 
 Start with Docker Compose:
@@ -57,7 +60,20 @@ Kindle: http://SERVER-IP:10000/kindle
 
 Replace `SERVER-IP` with the IP address of the machine running Docker.
 
-## docker-compose.yml
+You can also run it directly:
+
+```bash
+docker run -d \
+  --name kindleboard \
+  -p 10000:10000 \
+  -v ./data:/data \
+  --restart unless-stopped \
+  neil2046/kindleboard:latest
+```
+
+## Build From Source
+
+If you want to build the image yourself, clone the repository and use:
 
 ```yaml
 services:
@@ -89,7 +105,7 @@ The Compose file maps it into the container:
 
 Do not delete the `data` folder. It contains all user data.
 
-The repository includes a default English demo database at `data/schedule.db`. A fresh Docker installation starts with this demo content.
+The Docker image includes a default English demo database. On first start, if `/data/schedule.db` does not exist, KindleBoard copies the demo database into `/data/schedule.db`. Existing user data is never overwritten.
 
 SQLite runtime helper files are ignored by Git:
 
@@ -100,20 +116,11 @@ data/schedule.db-shm
 
 ## Upgrade
 
-Replace the application files, but keep the `data` folder:
-
-```text
-app.py
-Dockerfile
-docker-compose.yml
-static/
-README.md
-```
-
-Then rebuild and restart:
+Pull the latest image and restart:
 
 ```bash
-docker compose up -d --build
+docker compose pull
+docker compose up -d
 ```
 
 ## Kindle Notes

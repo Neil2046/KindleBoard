@@ -1,4 +1,5 @@
 import os
+import shutil
 import sqlite3
 from datetime import date, datetime, timedelta
 from html import escape
@@ -11,6 +12,10 @@ APP_TITLE = "KindleBoard"
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.abspath(os.environ.get("DATA_DIR", os.path.join(BASE_DIR, "data")))
 DB_PATH = os.path.join(DATA_DIR, "schedule.db")
+DEFAULT_DB_PATHS = [
+    os.path.join(BASE_DIR, "default-data", "schedule.db"),
+    os.path.join(BASE_DIR, "data", "schedule.db"),
+]
 PORT = int(os.environ.get("PORT", "10000"))
 MODES = ("schedule", "notebook", "todo")
 LANGUAGES = [
@@ -175,6 +180,11 @@ TEXT = {
 
 def ensure_db():
     os.makedirs(DATA_DIR, exist_ok=True)
+    if not os.path.exists(DB_PATH):
+        for default_db_path in DEFAULT_DB_PATHS:
+            if os.path.abspath(default_db_path) != os.path.abspath(DB_PATH) and os.path.exists(default_db_path):
+                shutil.copyfile(default_db_path, DB_PATH)
+                break
     with sqlite3.connect(DB_PATH) as conn:
         conn.execute("PRAGMA journal_mode = WAL")
         conn.execute("PRAGMA synchronous = NORMAL")
