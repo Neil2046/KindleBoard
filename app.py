@@ -37,7 +37,7 @@ TEXT = {
         "mode_schedule": "排班表", "mode_notebook": "记事本", "mode_todo": "待办清单",
         "admin_title": "KindleBoard 管理", "kindle_page": "Kindle 页面", "previous_week": "上一周",
         "next_week": "下一周", "monday_date": "周一日期", "open": "打开", "display_mode": "显示模式",
-        "language": "语言", "schedule_title": "个人排班表", "this_week": "本周", "total": "合计",
+        "language": "语言", "font_scale": "Kindle 字号", "schedule_title": "个人排班表", "this_week": "本周", "total": "合计",
         "date": "日期", "start": "上班", "end": "下班", "break_minutes": "休息分钟",
         "status": "状态", "note": "备注", "hours": "工时", "rest": "休息", "message": "留言",
         "week_note": "留言 / 本周备注", "notebook_title": "记事本", "notebook_content": "记事本内容",
@@ -53,7 +53,7 @@ TEXT = {
         "mode_schedule": "排班表", "mode_notebook": "記事本", "mode_todo": "待辦清單",
         "admin_title": "KindleBoard 管理", "kindle_page": "Kindle 頁面", "previous_week": "上一週",
         "next_week": "下一週", "monday_date": "週一日期", "open": "打開", "display_mode": "顯示模式",
-        "language": "語言", "schedule_title": "個人排班表", "this_week": "本週", "total": "合計",
+        "language": "語言", "font_scale": "Kindle 字號", "schedule_title": "個人排班表", "this_week": "本週", "total": "合計",
         "date": "日期", "start": "上班", "end": "下班", "break_minutes": "休息分鐘",
         "status": "狀態", "note": "備註", "hours": "工時", "rest": "休息", "message": "留言",
         "week_note": "留言 / 本週備註", "notebook_title": "記事本", "notebook_content": "記事本內容",
@@ -69,7 +69,7 @@ TEXT = {
         "mode_schedule": "Schedule", "mode_notebook": "Memo", "mode_todo": "To-do",
         "admin_title": "KindleBoard Admin", "kindle_page": "Kindle page", "previous_week": "Previous week",
         "next_week": "Next week", "monday_date": "Monday", "open": "Open", "display_mode": "Display mode",
-        "language": "Language", "schedule_title": "Personal schedule", "this_week": "This week", "total": "Total",
+        "language": "Language", "font_scale": "Kindle text size", "schedule_title": "Personal schedule", "this_week": "This week", "total": "Total",
         "date": "Date", "start": "Start", "end": "End", "break_minutes": "Break minutes",
         "status": "Status", "note": "Note", "hours": "Hours", "rest": "Rest", "message": "Message",
         "week_note": "Message / weekly note", "notebook_title": "Memo", "notebook_content": "Memo text",
@@ -85,7 +85,7 @@ TEXT = {
         "mode_schedule": "勤務表", "mode_notebook": "メモ", "mode_todo": "やること",
         "admin_title": "KindleBoard 管理", "kindle_page": "Kindle ページ", "previous_week": "前の週",
         "next_week": "次の週", "monday_date": "月曜日", "open": "開く", "display_mode": "表示モード",
-        "language": "言語", "schedule_title": "個人勤務表", "this_week": "今週", "total": "合計",
+        "language": "言語", "font_scale": "Kindle 文字サイズ", "schedule_title": "個人勤務表", "this_week": "今週", "total": "合計",
         "date": "日付", "start": "開始", "end": "終了", "break_minutes": "休憩分",
         "status": "状態", "note": "メモ", "hours": "時間", "rest": "休み", "message": "伝言",
         "week_note": "伝言 / 今週のメモ", "notebook_title": "メモ", "notebook_content": "メモ内容",
@@ -101,7 +101,7 @@ TEXT = {
         "mode_schedule": "근무표", "mode_notebook": "메모", "mode_todo": "할 일",
         "admin_title": "KindleBoard 관리", "kindle_page": "Kindle 페이지", "previous_week": "지난주",
         "next_week": "다음 주", "monday_date": "월요일", "open": "열기", "display_mode": "표시 모드",
-        "language": "언어", "schedule_title": "개인 근무표", "this_week": "이번 주", "total": "합계",
+        "language": "언어", "font_scale": "Kindle 글자 크기", "schedule_title": "개인 근무표", "this_week": "이번 주", "total": "합계",
         "date": "날짜", "start": "시작", "end": "종료", "break_minutes": "휴식 분",
         "status": "상태", "note": "메모", "hours": "시간", "rest": "휴식", "message": "메시지",
         "week_note": "메시지 / 이번 주 메모", "notebook_title": "메모", "notebook_content": "메모 내용",
@@ -117,7 +117,7 @@ TEXT = {
         "mode_schedule": "Turnos", "mode_notebook": "Notas", "mode_todo": "Tareas",
         "admin_title": "Administrar KindleBoard", "kindle_page": "Página Kindle", "previous_week": "Semana anterior",
         "next_week": "Semana siguiente", "monday_date": "Lunes", "open": "Abrir", "display_mode": "Modo",
-        "language": "Idioma", "schedule_title": "Turnos personales", "this_week": "Esta semana", "total": "Total",
+        "language": "Idioma", "font_scale": "Tamaño de texto Kindle", "schedule_title": "Turnos personales", "this_week": "Esta semana", "total": "Total",
         "date": "Fecha", "start": "Inicio", "end": "Fin", "break_minutes": "Pausa min",
         "status": "Estado", "note": "Nota", "hours": "Horas", "rest": "Descanso", "message": "Mensaje",
         "week_note": "Mensaje / nota semanal", "notebook_title": "Notas", "notebook_content": "Texto",
@@ -133,7 +133,7 @@ TEXT = {
         "mode_schedule": "Dienstplan", "mode_notebook": "Notizen", "mode_todo": "Aufgaben",
         "admin_title": "KindleBoard Verwaltung", "kindle_page": "Kindle-Seite", "previous_week": "Vorige Woche",
         "next_week": "Nächste Woche", "monday_date": "Montag", "open": "Öffnen", "display_mode": "Modus",
-        "language": "Sprache", "schedule_title": "Persönlicher Dienstplan", "this_week": "Diese Woche", "total": "Summe",
+        "language": "Sprache", "font_scale": "Kindle-Schriftgröße", "schedule_title": "Persönlicher Dienstplan", "this_week": "Diese Woche", "total": "Summe",
         "date": "Datum", "start": "Start", "end": "Ende", "break_minutes": "Pause Min.",
         "status": "Status", "note": "Notiz", "hours": "Stunden", "rest": "Frei", "message": "Nachricht",
         "week_note": "Nachricht / Wochennotiz", "notebook_title": "Notizen", "notebook_content": "Notiztext",
@@ -149,7 +149,7 @@ TEXT = {
         "mode_schedule": "Planning", "mode_notebook": "Notes", "mode_todo": "Tâches",
         "admin_title": "Administration KindleBoard", "kindle_page": "Page Kindle", "previous_week": "Semaine précédente",
         "next_week": "Semaine suivante", "monday_date": "Lundi", "open": "Ouvrir", "display_mode": "Mode",
-        "language": "Langue", "schedule_title": "Planning personnel", "this_week": "Cette semaine", "total": "Total",
+        "language": "Langue", "font_scale": "Taille du texte Kindle", "schedule_title": "Planning personnel", "this_week": "Cette semaine", "total": "Total",
         "date": "Date", "start": "Début", "end": "Fin", "break_minutes": "Pause min",
         "status": "État", "note": "Note", "hours": "Heures", "rest": "Repos", "message": "Message",
         "week_note": "Message / note semaine", "notebook_title": "Notes", "notebook_content": "Texte",
@@ -165,7 +165,7 @@ TEXT = {
         "mode_schedule": "Escala", "mode_notebook": "Notas", "mode_todo": "Tarefas",
         "admin_title": "Admin KindleBoard", "kindle_page": "Página Kindle", "previous_week": "Semana anterior",
         "next_week": "Próxima semana", "monday_date": "Segunda", "open": "Abrir", "display_mode": "Modo",
-        "language": "Idioma", "schedule_title": "Escala pessoal", "this_week": "Esta semana", "total": "Total",
+        "language": "Idioma", "font_scale": "Tamanho do texto Kindle", "schedule_title": "Escala pessoal", "this_week": "Esta semana", "total": "Total",
         "date": "Data", "start": "Início", "end": "Fim", "break_minutes": "Pausa min",
         "status": "Estado", "note": "Nota", "hours": "Horas", "rest": "Descanso", "message": "Mensagem",
         "week_note": "Mensagem / nota semanal", "notebook_title": "Notas", "notebook_content": "Texto",
@@ -349,6 +349,7 @@ def load_settings(preferred_lang=None):
         "mode": "schedule",
         "lang": valid_lang(preferred_lang or "zh-CN"),
         "notebook_text": "",
+        "font_scale": "90",
     }
     with db_connect() as conn:
         for row in conn.execute("SELECT key, value FROM settings"):
@@ -356,7 +357,15 @@ def load_settings(preferred_lang=None):
     if defaults["mode"] not in MODES:
         defaults["mode"] = "schedule"
     defaults["lang"] = valid_lang(defaults.get("lang", preferred_lang or "zh-CN"))
+    defaults["font_scale"] = str(clamp_font_scale(defaults.get("font_scale", "90")))
     return defaults
+
+
+def clamp_font_scale(value):
+    try:
+        return min(max(int(value), 70), 120)
+    except (TypeError, ValueError):
+        return 90
 
 
 def save_settings(form):
@@ -368,6 +377,7 @@ def save_settings(form):
         "mode": mode,
         "lang": lang,
         "notebook_text": form.get("notebook_text", [""])[0].strip(),
+        "font_scale": str(clamp_font_scale(form.get("font_scale", ["90"])[0])),
     }
     with db_connect() as conn:
         for key, value in values.items():
@@ -582,6 +592,13 @@ def admin_script():
       if (form) form.submit();
     });
   }
+  var fontScale = document.querySelector('input[name="font_scale"]');
+  var fontScaleValue = document.querySelector('[data-font-scale-value]');
+  if (fontScale && fontScaleValue) {
+    fontScale.addEventListener('input', function () {
+      fontScaleValue.textContent = fontScale.value + '%';
+    });
+  }
   syncPanels();
 })();
 </script>
@@ -590,6 +607,7 @@ def admin_script():
 
 def render_admin(week, settings, todos):
     lang = settings["lang"]
+    font_scale = clamp_font_scale(settings.get("font_scale", "90"))
     previous_week = (week["week_start"] - timedelta(days=7)).isoformat()
     next_week = (week["week_start"] + timedelta(days=7)).isoformat()
     week_start = week["week_start"].isoformat()
@@ -663,6 +681,11 @@ def render_admin(week, settings, todos):
         <select name="lang">
           {''.join(language_options)}
         </select>
+      </label>
+      <label class="font-scale-control">
+        <span>{escape(text(lang, "font_scale"))}</span>
+        <input type="range" name="font_scale" min="70" max="120" step="5" value="{font_scale}">
+        <strong data-font-scale-value>{font_scale}%</strong>
       </label>
     </section>
 
@@ -834,6 +857,7 @@ def render_kindle_todo(todos, lang):
 
 def render_kindle(week, settings, todos):
     lang = settings["lang"]
+    font_scale = clamp_font_scale(settings.get("font_scale", "90"))
     if settings["mode"] == "notebook":
         content = render_kindle_notebook(settings)
     elif settings["mode"] == "todo":
@@ -841,9 +865,33 @@ def render_kindle(week, settings, todos):
     else:
         content = render_kindle_schedule(week, lang)
     body = f"""
-<main class="kindle-page">
+<main class="kindle-page" style="font-size: {font_scale}%;">
 {content}
 </main>
+<script>
+(function () {{
+  function fitKindlePage() {{
+    var page = document.querySelector('.kindle-page');
+    if (!page) return;
+    page.style.transform = 'none';
+    var roomW = Math.max(window.innerWidth - 2, 1);
+    var roomH = Math.max(window.innerHeight - 2, 1);
+    var scaleW = roomW / Math.max(page.scrollWidth, 1);
+    var scaleH = roomH / Math.max(page.scrollHeight, 1);
+    var scale = Math.min(1, scaleW, scaleH);
+    if (scale < 1) {{
+      page.style.transform = 'scale(' + scale + ')';
+    }}
+  }}
+  if (document.readyState === 'loading') {{
+    document.addEventListener('DOMContentLoaded', fitKindlePage);
+  }} else {{
+    fitKindlePage();
+  }}
+  window.onload = fitKindlePage;
+  window.onresize = fitKindlePage;
+}})();
+</script>
 """
     return html_page(mode_label(settings["mode"], lang), body, "/static/kindle.css", lang=lang)
 

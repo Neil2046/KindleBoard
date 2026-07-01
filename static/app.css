@@ -215,6 +215,28 @@ textarea {
   max-width: 260px;
 }
 
+.font-scale-control {
+  display: grid;
+  grid-template-columns: minmax(160px, 260px) auto;
+  align-items: center;
+  gap: 8px 12px;
+  max-width: 360px;
+  margin-top: 14px;
+}
+
+.font-scale-control span {
+  grid-column: 1 / -1;
+}
+
+.font-scale-control input {
+  padding: 0;
+}
+
+.font-scale-control strong {
+  color: var(--ink);
+  font-size: 16px;
+}
+
 .compact-note {
   padding: 0;
   margin-top: 12px;
